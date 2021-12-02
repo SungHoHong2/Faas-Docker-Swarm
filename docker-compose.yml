@@ -8,8 +8,10 @@ services:
             - functions
         environment:
             functions_provider_url: "http://faas-swarm:8080/"
-            read_timeout: "5m5s" # Maximum time to read HTTP request
-            write_timeout: "5m5s" # Maximum time to write HTTP response
+            # read_timeout: "5m5s" # Maximum time to read HTTP request
+            # write_timeout: "5m5s" # Maximum time to write HTTP response            
+            read_timeout: "60m5s" # Maximum time to read HTTP request
+            write_timeout: "60m5s" # Maximum time to write HTTP response
             upstream_timeout: "5m" # Maximum duration of upstream function call - should be more than read_timeout and write_timeout
             dnsrr: "true" # Temporarily use dnsrr in place of VIP while issue persists on PWD
             faas_nats_address: "nats"
@@ -77,8 +79,8 @@ services:
         networks:
             - functions
         environment:
-            read_timeout: "5m5s" # set both here, and on your functions
-            write_timeout: "5m5s" # set both here, and on your functions
+            read_timeout: "60m5s" # set both here, and on your functions
+            write_timeout: "60m5s" # set both here, and on your functions
             DOCKER_API_VERSION: "1.30"
             basic_auth: "${BASIC_AUTH:-false}"
             secret_mount_path: "/run/secrets/"
@@ -127,7 +129,7 @@ services:
             - functions
         environment:
             max_inflight: "1"
-            ack_wait: "5m5s" # Max duration of any async task / request
+            ack_wait: "60m5s" # Max duration of any async task / request
             basic_auth: "${BASIC_AUTH:-false}"
             secret_mount_path: "/run/secrets/"
             gateway_invoke: "true"
