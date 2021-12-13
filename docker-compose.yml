@@ -12,7 +12,7 @@ services:
             # write_timeout: "5m5s" # Maximum time to write HTTP response            
             read_timeout: "60m5s" # Maximum time to read HTTP request
             write_timeout: "60m5s" # Maximum time to write HTTP response
-            upstream_timeout: "5m" # Maximum duration of upstream function call - should be more than read_timeout and write_timeout
+            upstream_timeout: "60m5s" # Maximum duration of upstream function call - should be more than read_timeout and write_timeout
             dnsrr: "true" # Temporarily use dnsrr in place of VIP while issue persists on PWD
             faas_nats_address: "nats"
             faas_nats_port: 4222
